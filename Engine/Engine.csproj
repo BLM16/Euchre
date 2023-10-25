@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>BLM16.Games.Euchre.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <PackageId>BLM16.Games.Euchre.$(AssemblyName)</PackageId>
+    <Title>Euchre Engine</Title>
+    <Authors>BLM16</Authors>
+    <Product>Euchre.$(AssemblyName)</Product>
+    <Copyright>Copyright (c) 2023 Bradley Myers. All rights reserved.</Copyright>
+    <AssemblyName>Euchre.$(MSBuildProjectName)</AssemblyName>
+  </PropertyGroup>
+
+</Project>

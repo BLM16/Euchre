@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BLM16.Games.Euchre"
+             x:Class="BLM16.Games.Euchre.MenuPage"
+             x:DataType="local:MenuPage">
+
+    <ScrollView BackgroundColor="Green">
+        <VerticalStackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center">
+            <Label Text="Euchre"
+                   FontSize="60"
+                   Margin="30"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+
+            <Button Text="Play"
+                    BorderColor="Black"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    FontSize="Medium"
+                    Margin="0,0,0,10"
+                    Clicked="BtnPlay_Clicked" />
+            <Button Text="Tutorial"
+                    BorderColor="Black"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    FontSize="Medium"
+                    Clicked="BtnTutorial_Clicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
+    

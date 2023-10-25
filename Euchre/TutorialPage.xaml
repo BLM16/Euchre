@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BLM16.Games.Euchre"
+             xmlns:engine="clr-namespace:BLM16.Games.Euchre.Engine;assembly=Euchre.Engine"
+             xmlns:t="clr-namespace:BLM16.Games.Euchre.Templates"
+             x:Class="BLM16.Games.Euchre.TutorialPage"
+             x:DataType="local:TutorialPage">
+
+    <ScrollView BackgroundColor="Green">
+        <VerticalStackLayout>
+            <Grid BackgroundColor="Green">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+                <!-- The score and trick counters -->
+                <HorizontalStackLayout x:Name="CountersView"
+                                       IsVisible="false"
+                                       Grid.Row="0">
+                    <Grid Margin="30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="20" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Your Score:"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="0"
+                               Grid.Column="0"/>
+                        <Label x:Name="txtPlayerScore"
+                               Text="0"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="0"
+                               Grid.Column="1"/>
+
+                        <Label Text="Their Score:"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="1"
+                               Grid.Column="0"/>
+                        <Label x:Name="txtOpponentScore"
+                               Text="0"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="1"
+                               Grid.Column="1"/>
+                    </Grid>
+                    <Grid Margin="30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="130" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Your Tricks:"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="0"
+                               Grid.Column="0"/>
+                        <Label x:Name="txtPlayerTricks"
+                               Text="0"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="0"
+                               Grid.Column="1"/>
+
+                        <Label Text="Their Tricks:"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="1"
+                               Grid.Column="0"/>
+                        <Label x:Name="txtOpponentTricks"
+                               Text="0"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="1"
+                               Grid.Column="1"/>
+
+                        <Label Text="Dealer: Left"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="0"
+                               Grid.Column="2" />
+                        <Label Text="Caller: You"
+                               TextColor="Black"
+                               FontSize="Small"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Grid.Row="1"
+                               Grid.Column="2" />
+                    </Grid>
+                </HorizontalStackLayout>
+
+                <!-- The trump order up view -->
+                <VerticalStackLayout x:Name="OrderUpView"
+                                     IsVisible="false"
+                                     Grid.Row="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     WidthRequest="125">
+                    <ImageButton x:Name="BtnOrderUp"
+                                 BorderColor="Black"
+                                 BorderWidth="1"
+                                 CornerRadius="10"
+                                 BackgroundColor="White"
+                                 Margin="10" />
+
+                    <Button Text="Pass"
+                            BorderColor="Black"
+                            BorderWidth="1"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            FontSize="20"
+                            WidthRequest="100" />
+                </VerticalStackLayout>
+
+                <!-- The trump selection view -->
+                <VerticalStackLayout x:Name="TrumpBiddingView"
+                                     IsVisible="false"
+                                     Grid.Row="1"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     WidthRequest="500">
+
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <ImageButton Source="suit_hearts.png"
+                                     BorderColor="Black"
+                                     BorderWidth="1"
+                                     CornerRadius="10"
+                                     BackgroundColor="White"
+                                     Margin="10" />
+                        <ImageButton Source="suit_diamonds.png"
+                                     BorderColor="Black"
+                                     BorderWidth="1"
+                                     CornerRadius="10"
+                                     BackgroundColor="White"
+                                     Margin="10" />
+                        <ImageButton Source="suit_spades.png"
+                                     BorderColor="Black"
+                                     BorderWidth="1"
+                                     CornerRadius="10"
+                                     BackgroundColor="White"
+                                     Margin="10" />
+                        <ImageButton Source="suit_clubs.png"
+                                     BorderColor="Black"
+                                     BorderWidth="1"
+                                     CornerRadius="10"
+                                     BackgroundColor="White"
+                                     Margin="10" />
+                    </HorizontalStackLayout>
+
+                    <Button x:Name="BiddingPass"
+                            Text="Pass"
+                            BorderColor="Black"
+                            BorderWidth="1"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            FontSize="20"
+                            WidthRequest="455" />
+                </VerticalStackLayout>
+
+                <!-- The main playing area -->
+                <Grid x:Name="MainContent"
+                      IsVisible="false"
+                      Grid.Row="1"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="180" />
+                        <RowDefinition Height="140" />
+                        <RowDefinition Height="180" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="180" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame BackgroundColor="Transparent"
+                           BorderColor="Black"
+                           WidthRequest="120"
+                           HeightRequest="160"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Padding="0" />
+                    <Frame BackgroundColor="Transparent"
+                           BorderColor="Black"
+                           WidthRequest="120"
+                           HeightRequest="160"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Rotation="90"
+                           Padding="0" />
+                    <Frame BackgroundColor="Transparent"
+                           BorderColor="Black"
+                           WidthRequest="120"
+                           HeightRequest="160"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           Rotation="-90"
+                           Padding="0" />
+                    <Frame BackgroundColor="Transparent"
+                           BorderColor="Black"
+                           WidthRequest="120"
+                           HeightRequest="160"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           Padding="0" />
+
+                    <Image Source="suit_hearts.png"
+                           Grid.Row="1"
+                           Grid.Column="1" />
+                </Grid>
+
+                <!-- The player's hand -->
+                <CollectionView x:Name="PlayerHand"
+                                IsVisible="false"
+                                ItemsLayout="HorizontalList"
+                                SelectionMode="None"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Grid.Row="2">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="t:Card">
+                            <t:Card Rank="{Binding Rank}" Suit="{Binding Suit}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+                
+                <!-- The tutorial messages -->
+                <VerticalStackLayout Grid.Row="3">
+                    <Label x:Name="TutorialMessage"
+                           TextColor="Black"
+                           FontSize="Small"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+
+                    <Button x:Name="BtnNext"
+                            Text="Next"
+                            BorderColor="Black"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            FontSize="Medium"
+                            WidthRequest="400"
+                            Margin="10"
+                            Clicked="BtnNext_Clicked" />
+                </VerticalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
